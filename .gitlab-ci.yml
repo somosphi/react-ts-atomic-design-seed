@@ -1,0 +1,7 @@
+image: somosphi/typescript:latest
+
+stages:
+  - test
+
+include:
+  - local: "/cicd/test.yml"
