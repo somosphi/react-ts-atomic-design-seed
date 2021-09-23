@@ -19,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react-router-dom": "^5.1.9",
+    "@types/styled-components": "^5.1.14",
     "commitizen": "^4.2.4",
     "craco-alias": "^3.0.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -39,6 +40,7 @@
     "axios": "^0.21.4",
     "env-cmd": "^10.1.0",
     "module-alias": "^2.2.2",
+    "phi-whitelabel-design-tokens": "^2.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -46,6 +48,7 @@
     "react-scripts": "4.0.3",
     "redux-thunk": "^2.3.0",
     "reduxsauce": "^1.2.1",
+    "styled-components": "^5.3.1",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.11.0",
     "typescript": "^4.1.2",
