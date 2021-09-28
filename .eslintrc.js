@@ -1,12 +1,15 @@
 module.exports = {
-  extends: ['react-app'],
+  extends: ['react-app', 'plugin:react/recommended'],
   rules: {
     'prefer-const': 'warn',
     'react/jsx-no-useless-fragment': 'off',
-    'quotes': ['error', 'single'],
-    'react/self-closing-comp': ['warn', { 'component': true, 'html': true }],
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+    quotes: ['error', 'single'],
+    'react/self-closing-comp': ['warn', { component: true, html: true }],
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error']
+    '@typescript-eslint/no-unused-vars': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     'import/resolver': {
@@ -22,10 +25,10 @@ module.exports = {
           ['@services', './src/services'],
           ['@store', './src/store'],
           ['@styles', './src/styles'],
-          ['@utils', './src/utils']
+          ['@utils', './src/utils'],
         ],
         extensions: ['.ts', '.js', '.jsx', '.tsx', '.json'],
       },
     },
   },
-};
+}
