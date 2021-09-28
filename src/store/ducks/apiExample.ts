@@ -1,32 +1,51 @@
-// import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import sleep from '@/services/api/fakeApi'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-// const store = createSlice({
-//   name: 'modal-example',
-//   initialState: {
-//     isError: false,
-//     isFetching: false,
-//     isSuccess: false,
-//     data: {},
-//     lastUpdate: new Date(),
-//   },
-//   reducers: {
-//     showModal(state) {
-//       state.show = true
-//     },
-//     hideModal(state) {
-//       state.show = false
-//     },
-//   },
-// })
+export const fetchAsyncExample = createAsyncThunk(
+  'posts/fetchAsyncExample',
+  async () => {
+    await sleep(4000)
+    return { teste: 'teste api async' }
+  },
+)
 
-// const fetchUserById = createAsyncThunk(
-//   'example-api',
-//   async (userId, thunkAPI) => {
-//     const response = await userAPI.fetchById(userId)
-//     return response.data
-//   },
-// )
+const store = createSlice({
+  name: 'modal-example',
+  initialState: {
+    isError: false,
+    isFetching: false,
+    isSuccess: false,
+    data: {},
+  },
+  reducers: {
+    populateData(state, payload) {
+      state = { ...state, isError: false, isFetching: false, ...payload }
+    },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchAsyncExample.pending, (state) => {
+        state.isFetching = true
+      })
+      .addCase(fetchAsyncExample.fulfilled, (state, action) => {
+        state = {
+          ...state,
+          isFetching: false,
+          isError: false,
+          isSuccess: true,
+          data: action.payload,
+        }
+      })
+      .addCase(fetchAsyncExample.rejected, (state, action) => {
+        state = {
+          ...state,
+          isFetching: false,
+          isError: true,
+          isSuccess: false,
+          data: action.error,
+        }
+      })
+  },
+})
 
-// export const { showModal, hideModal } = store.actions
-
-// export default store.reducer
+export default store.reducer
