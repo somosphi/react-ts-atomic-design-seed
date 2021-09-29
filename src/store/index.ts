@@ -1,12 +1,13 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import logger from 'redux-logger'
-import { authReducer, exampleModal } from './ducks'
+import { authReducer, exampleModal, apiExample } from './ducks'
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     exampleModal,
+    apiExample,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger],
   devTools: process.env.NODE_ENV !== 'production',

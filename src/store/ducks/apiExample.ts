@@ -10,7 +10,7 @@ export const fetchAsyncExample = createAsyncThunk(
 )
 
 const store = createSlice({
-  name: 'modal-example',
+  name: 'apiExample',
   initialState: {
     isError: false,
     isFetching: false,
@@ -26,24 +26,19 @@ const store = createSlice({
     builder
       .addCase(fetchAsyncExample.pending, (state) => {
         state.isFetching = true
+        state.data = {}
       })
       .addCase(fetchAsyncExample.fulfilled, (state, action) => {
-        state = {
-          ...state,
-          isFetching: false,
-          isError: false,
-          isSuccess: true,
-          data: action.payload,
-        }
+        state.isFetching = false
+        state.isSuccess = true
+        state.isError = false
+        state.data = action.payload
       })
       .addCase(fetchAsyncExample.rejected, (state, action) => {
-        state = {
-          ...state,
-          isFetching: false,
-          isError: true,
-          isSuccess: false,
-          data: action.error,
-        }
+        state.isFetching = false
+        state.isSuccess = false
+        state.isError = true
+        state.data = action.error
       })
   },
 })
